@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -8,6 +9,8 @@
     <RootNamespace>CSharpTestAutomation</RootNamespace>
     <AssemblyName>CSharpTestAutomation</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,6 +44,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="nunit.runsettings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>nunit.Designer.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="WebDrivers\chromedriver" />
     <None Include="WebDrivers\chromedriver.exe" />
@@ -50,6 +57,11 @@
     <None Include="Data\staticdata.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="nunit.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>nunit.runsettings</DependentUpon>
+    </Compile>
     <Compile Include="Tests\BrowserSource.cs" />
     <Compile Include="Tests\UnitTest1.cs" />
     <Compile Include="Tests\Base\BaseSeleniumWebTest.cs" />
@@ -67,4 +79,10 @@
     <Compile Include="PageObjects\hotwire\SearchPage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props'))" />
+  </Target>
 </Project>
