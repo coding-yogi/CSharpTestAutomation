@@ -24,33 +24,19 @@ namespace CSharpAutomationFramework.Framework.Core
         public IWebDriver GetWebDriver(String browser)
         {
             PlatformID osName = System.Environment.OSVersion.Platform;
-            String webDriverType = browser;
+            String webDriverType = browser.ToLower();
 
-
-            if (webDriverType.ToLower().Equals("firefox") || webDriverType.Length == 0) 
-            {
-                /*if(osName == PlatformID.Unix || osName == PlatformID.MacOSX) 
-                {
-                    System.Environment.SetEnvironmentVariable("webdriver.gecko.driver", webdriversPath + "/geckodriver");
-                }
-                else 
-                {
-                    System.Environment.SetEnvironmentVariable("webdriver.gecko.driver", webdriversPath + "/geckodriver.exe");
-                }*/
-                return new FirefoxDriver(webdriversPath);
-            }
-            else if (webDriverType.ToLower().Equals("chrome")) 
-            {
-                return new ChromeDriver(webdriversPath);
-            }
-            else if (webDriverType.ToLower().Equals("ie")){
-                System.Environment.SetEnvironmentVariable("webdriver.ie.driver", webdriversPath + "/IEDriverServer32.exe");
-                return new InternetExplorerDriver();
-            }
-            else {
-                    Console.WriteLine("Driver type " + webDriverType + " is invalid");
-                return null;
-            }
+			switch (webDriverType)
+			{
+				case "firefox":
+					return new FirefoxDriver(webdriversPath);
+				case "chrome":
+					return new ChromeDriver(webdriversPath);
+				case "ie":
+					return new InternetExplorerDriver(webdriversPath);
+				default:
+					return new ChromeDriver(webdriversPath);
+			}
         }
 
         public IWebDriver GetRemoteWebDriver(String URL, ICapabilities dc) 
