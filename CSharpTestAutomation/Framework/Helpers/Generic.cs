@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 namespace CSharpAutomationFramework.Framework.Helpers
 {
     public static class Generic
     {
+        private static Random random = new Random();
+
         public static String getTimeDifference(long startTime, long endTime)
         {
             //Finding the difference in milliseconds
@@ -26,5 +29,33 @@ namespace CSharpAutomationFramework.Framework.Helpers
             String[] delimiters = { solName };
             return System.AppContext.BaseDirectory.Split(delimiters, StringSplitOptions.None)[0] + solName + "/" + solName;
         }
+
+        public enum RandomStringType {
+            AlphaNumeric,
+            Numeric,
+            Alpha
+
+        }
+
+        public static string RandomString(RandomStringType type, int length)
+        {
+            string chars = "";
+            switch(type) 
+            {
+                case RandomStringType.AlphaNumeric:
+                    chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+                    break;
+                case RandomStringType.Numeric:
+                    chars = "0123456789";
+                    break;
+                case RandomStringType.Alpha:
+                    chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                    break;
+            }
+
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
     }
 }

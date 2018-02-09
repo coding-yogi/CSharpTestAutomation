@@ -437,5 +437,23 @@ namespace CSharpAutomationFramework.Framework.Core
             
             return this;
         }
+
+        public Wrapper SwitchToDefaultContent() 
+        {
+            driver.SwitchTo().DefaultContent();
+            return this;
+        }
+
+        public Wrapper SwitchToFrameWithName(String frameName)
+        {
+            driver.SwitchTo().Frame(frameName);
+            return this;
+        }
+
+        public Wrapper AcceptAlert()
+        {
+            driver.SwitchTo().Alert().Accept();
+            return this;
+        }
     }
 }

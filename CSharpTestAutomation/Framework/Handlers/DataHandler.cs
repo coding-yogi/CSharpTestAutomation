@@ -60,12 +60,12 @@ namespace CSharpAutomationFramework.Framework.Handlers
             }
         }
 
-        public JToken GetAppConfig(String configKey)
+        public String GetAppConfig(String configKey)
         {
             try
             {
                 JToken appConfig = GetAppConfigJson();
-                return appConfig["env"][env][configKey];
+                return appConfig["env"][env][configKey].ToString();
             }
             catch (Exception ex)
             {
@@ -74,12 +74,12 @@ namespace CSharpAutomationFramework.Framework.Handlers
             }
         }
 
-        public JToken GetAppData(String dataKey)
+        public String GetAppData(String dataKey)
         {
             try
             {
                 JToken appConfig = GetAppDataJson();
-                return appConfig["env"][env][dataKey];
+                return appConfig["env"][env][dataKey].ToString();
             }
             catch (Exception ex)
             {
