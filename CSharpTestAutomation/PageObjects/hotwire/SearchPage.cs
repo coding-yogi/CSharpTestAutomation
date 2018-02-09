@@ -7,28 +7,20 @@ namespace CSharpAutomationFramework.PageObjects.hotwire
 {
     public class SearchPage : BasePage
     {
-        private Reporting reporter;
-        private IWebDriver driver;
-        private Wrapper wrapper;
 
         //PageUiObjects
-        private readonly String lnkVacation = "linktext:=Vacations";
-        private readonly String edtFlyFrom = "id:=origin";
-        private readonly String edtFlyTo = "name:=destination";
-        private readonly String edtStartDate = "cssselector:=input.startDate";
-        private readonly String edtEndDate = "cssselector:=input.endDate";
-        private readonly String lstStartHour = "id:=startHour";
-        private readonly String lstEndHour = "id:=endHour";
-        private readonly String btnFindAVacation = "xpath:=//button/span[text()='Find a vacation']";
+        readonly String lnkVacation = "linktext:=Vacations";
+        readonly String edtFlyFrom = "id:=origin";
+        readonly String edtFlyTo = "name:=destination";
+        readonly String edtStartDate = "cssselector:=input.startDate";
+        readonly String edtEndDate = "cssselector:=input.endDate";
+        readonly String lstStartHour = "id:=startHour";
+        readonly String lstEndHour = "id:=endHour";
+        readonly String btnFindAVacation = "xpath:=//button/span[text()='Find a vacation']";
 
+        readonly String imgExpand = "xpath:=//a[text()='{0}']/../../td/a/img";
 
-        public SearchPage(IWebDriver driver, Reporting reporter)
-        {
-            this.reporter = reporter;
-            this.driver = driver;
-            wrapper = new Wrapper(driver, reporter);
-        }
-
+        public SearchPage(IWebDriver driver, Reporting reporter) : base(driver, reporter) {}
 
         public SearchPage selectPackage(String packageName)
         {

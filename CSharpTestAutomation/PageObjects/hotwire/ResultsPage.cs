@@ -8,20 +8,11 @@ namespace CSharpAutomationFramework.PageObjects.hotwire
 {
     public class ResultsPage : BasePage
     {
-        private Reporting reporter;
-        private IWebDriver driver;
-        private Wrapper wrapper;
-
         //PageUiObjects
-        private readonly String imgLoader = "cssselector:=span.loader";
-        private readonly String lblResults = "cssselector:=p.showing-results";
+        readonly String imgLoader = "cssselector:=span.loader";
+        readonly String lblResults = "cssselector:=p.showing-results";
 
-        public ResultsPage(IWebDriver driver, Reporting reporter)
-        {
-            this.reporter = reporter;
-            this.driver = driver;
-            wrapper = new Wrapper(driver, reporter);
-        }
+        public ResultsPage(IWebDriver driver, Reporting reporter) : base(driver, reporter) { }
 
         public ResultsPage WaitForLoader()
         {

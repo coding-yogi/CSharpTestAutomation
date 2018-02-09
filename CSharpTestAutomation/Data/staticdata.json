@@ -2,8 +2,38 @@
   "appdata": {
     "env": {
       "production": {
-        "fromCity": "SFO",
-        "toCity": "LAX"
+        //credentials
+        "username": "AppUser1",
+        "password": "Ril12345",
+        "location": "503737",
+
+        //ForgetPassword
+        "otp":  "",
+        "loginid": "",
+
+        //Address
+        "state":  "Andhra Pradesh",
+        "city":  "Visakhapatnam",
+        "district": "Visakhapatnam",
+
+        //Route
+        "routefrom":  "state",
+        "routeto": "Andhra Pradesh",
+        "routetype": "Karnataka",
+
+        //account details
+        "typeofcard":  "Trip Customer",
+
+        //customer enrolment details
+        "designation":  "TCA",
+
+        //vehicle entry
+        "captivecard":  "Mining",
+
+        //attachments
+        "appformpath": "ApplicationForm.txt",
+        "identityproofpath":  "IdentityProof.txt",
+        "addproofpath": "AddressProof.txt",
       }
     }
   }

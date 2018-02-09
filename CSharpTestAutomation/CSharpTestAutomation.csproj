@@ -53,8 +53,11 @@
     <None Include="WebDrivers\chromedriver.exe" />
     <None Include="WebDrivers\geckodriver" />
     <None Include="WebDrivers\geckodriver.exe" />
-    <None Include="Config\hotwireconfig.json" />
+    <None Include="Config\tcfaconfig.json" />
     <None Include="Data\staticdata.json" />
+    <None Include="Attachments\ApplicationForm.txt" />
+    <None Include="Attachments\IdentityProof.txt" />
+    <None Include="Attachments\AddressProof.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="nunit.Designer.cs">
@@ -63,7 +66,6 @@
       <DependentUpon>nunit.runsettings</DependentUpon>
     </Compile>
     <Compile Include="Tests\BrowserSource.cs" />
-    <Compile Include="Tests\UnitTest1.cs" />
     <Compile Include="Tests\Base\BaseSeleniumWebTest.cs" />
     <Compile Include="Tests\Base\BaseTest.cs" />
     <Compile Include="Framework\Base\BasePage.cs" />
@@ -72,11 +74,22 @@
     <Compile Include="Framework\Core\Wrapper.cs" />
     <Compile Include="Framework\Handlers\DataHandler.cs" />
     <Compile Include="Framework\Helpers\Generic.cs" />
-    <Compile Include="Constants\Hotwire\HotwireConfigKeys.cs" />
-    <Compile Include="Constants\Hotwire\HotwireDataKeys.cs" />
-    <Compile Include="PageObjects\hotwire\LaunchApplication.cs" />
-    <Compile Include="PageObjects\hotwire\ResultsPage.cs" />
-    <Compile Include="PageObjects\hotwire\SearchPage.cs" />
+    <Compile Include="Constants\Tcfa\TcfaConfigKeys.cs" />
+    <Compile Include="Constants\Tcfa\TcfaDataKeys.cs" />
+    <Compile Include="PageObjects\Tcfa\ForgotPasswordPage.cs" />
+    <Compile Include="PageObjects\Tcfa\HomePage.cs" />
+    <Compile Include="PageObjects\Tcfa\LaunchApplication.cs" />
+    <Compile Include="PageObjects\Tcfa\LoginPage.cs" />
+    <Compile Include="PageObjects\Tcfa\NewCustomerRegistrationPage.cs" />
+    <Compile Include="PageObjects\Tcfa\AttachmentsPage.cs" />
+    <Compile Include="PageObjects\Tcfa\CustomerVehicleInformationPage.cs" />
+    <Compile Include="PageObjects\Tcfa\VehicleEntryPage.cs" />
+    <Compile Include="Tests\TCFALogin.cs" />
+    <Compile Include="Tests\TCFACustomerRegistration.cs" />
+    <Compile Include="PageObjects\Tcfa\PendingListPage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Attachments\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
